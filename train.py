@@ -61,9 +61,8 @@ if __name__ == "__main__":
     parser.add_argument("--lr", help="learning rate", type = float, default= 1e-4)
     parser.add_argument("--mementum", help="momentum", type = float, default= 0.9 )
     parser.add_argument("--weight_decay", help="weight decay", type = float, default= 1e-4 )
-
     parser.add_argument("--optimizer", type = str, default="adam", choices=['sgd','adam'])
-    parser.add_argument("--epoch", type = int, help="total epoches", default=200)
+    parser.add_argument("--epoch", type = int, help="total epoches", default=100)
     parser.add_argument("--batch", type = int, help="batch size",default=128)
     parser.add_argument("--loss",  type = str, help="loss function",default="mse", choices=['mse'])
     parser.add_argument("--datasets",  type = str, help="datasets path",default="datasets/")

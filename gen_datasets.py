@@ -44,7 +44,7 @@ def gen_data(args):
             point2 = (x + patch_size, y)                                # top-right
             point3 = (x, y + patch_size)                                # bottom-left
             point4 = (x + patch_size, y + patch_size)                   # bottom-right
-            imageCorners = np.array([point1,point2,point4,point3])
+            imageCorners = np.array([point1,point2,point3,point4])
 
             #--Get patches--#
             raw_patch = image[ y:y + patch_size, x:x + patch_size]                  # Patch of original image
@@ -68,6 +68,7 @@ def gen_data(args):
             H_4point = imagePerturbedCorners - imageCorners         # 4-point matrix
             image_pairs.append(imageFeature)
             labels.append(H_4point)
+
     image_pairs = np.stack(image_pairs)
     labels = np.stack(labels)
     np.save("datasets/"+phase+"_data.npy",image_pairs)
@@ -78,7 +79,7 @@ def gen_data(args):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--phase",type=str,default="train",choices=['train','val'])
+    parser.add_argument("--phase",type=str,default="val",choices=['train','val'])
     parser.add_argument("--train_coco_path",type=str,default="/datasets/coco/train2014")
     parser.add_argument("--val_coco_path",type=str,default="/datasets/coco/val2014")
     parser.add_argument("--train_number",type=int,default = 80000)
